@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Product ID Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card {
+            width: 420px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.08),
+                0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+            animation: cardEntry 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cardEntry {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .company-badge {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e9ecef;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #6c757d;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .product-image-container {
+            width: 180px;
+            height: 180px;
+            margin: 50px auto 30px;
+            position: relative;
+            animation: imageEntry 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+        }
+
+        @keyframes imageEntry {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .product-image-container::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 117, 125, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            border: 3px solid #e9ecef;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .product-image i {
+            font-size: 70px;
+            color: #6c757d;
+            opacity: 0.8;
+        }
+
+        .product-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 0.6s ease 0.5s backwards;
+        }
+
+        .product-category {
+            font-size: 16px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.6s ease 0.6s backwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.6s ease 0.7s backwards;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+
+        .social-icon:hover {
+            background: #e9ecef;
+            color: #495057;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeInUp 0.6s ease 0.8s backwards;
+        }
+
+        .btn {
+            padding: 16px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: #0d6efd;
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #0b5ed7;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            border-color: #dee2e6;
+            transform: translateY(-2px);
+        }
+
+        .product-id {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #6c757d;
+            letter-spacing: 1.5px;
+            font-weight: 300;
+            animation: fadeInUp 0.6s ease 0.9s backwards;
+        }
+
+        @media (max-width: 480px) {
+            .product-card {
+                width: 100%;
+                max-width: 420px;
+                padding: 2.5rem 2rem;
+            }
+
+            .product-name {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-card">
+            <div class="company-badge">PRODUCT</div>
+
+            <div class="product-image-container">
+                <div class="product-image">
+                    <img src="img.jpg" alt="bracelet" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <h2 class="product-name">Bow Pendent</h2>
+            <p class="product-category">Jewelry</p>
+
+            <div class="social-icons">
+                <div class="social-icon">
+                    <a href="https://www.instagram.com/linkytune/" target="_blank"><i class="fab fa-instagram" style="color: rgb(255, 0, 0);"></i></a>
+                </div>
+                <div class="social-icon">
+                    <a href="https://www.amazon.in/s?k=LINKYTUNE" target="_blank"><i class="fab fa-amazon" style="color: rgb(0, 0, 0);"></i></a>
+                </div>
+                 <div class="social-icon">
+                     <a href="https://wa.me/9227905004" target="_blank"><i class="fab fa-whatsapp" style="color: rgb(0, 255, 21);"></i></a>
+                 </div>
+                 <div class="social-icon">
+                     <a href="https://t.me/linkytune" target="_blank"><i class="fab fa-telegram" style="color: rgb(0, 184, 255);"></i></a>
+                 </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary">
+                    <a href="https://www.meesho.com/linkytunegold-plated-bow-pendant-waterproof-stainless-steel-necklace-for-women-and-girls-anti-tarnish-jewellery-trendy-fashion-bow-necklace-elegant-daily-wear-pendant-chain-stylish-gold-bow-design-necklace-durable-scratch-resistant-jewellery/p/aps8m7?ms=2&source=Meri+Shop" target="_blank"><span style="color: #ffffff; ">View Product Details</span></a>
+                </button>
+                <button class="btn btn-secondary">
+                    <span>MRP: ₹399</span>
+                </button>
+                <!-- <button class="btn btn-secondary">
+                    <span>Warranty: 2 Years</span>
+                </button> -->
+            </div>
+
+            <!-- <div class="product-id">SKU: PRD-WGT-2024-001</div> -->
+        </div>
+    </div>
+</body>
+</html>
